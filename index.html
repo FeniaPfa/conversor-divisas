@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Desafio #</title>
+
+        <!-- Normalize css -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+            integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="assets/css/style.css" />
+    </head>
+    <body>
+        <h1>Conversor de Monedas</h1>
+        <form>
+            <label for="clpInput">Pesos CLP</label>
+            <input
+                name="clpInput"
+                id="clpInput"
+                type="number"
+                placeholder="Ingrese el monto en CLP"
+            />
+            <label for="monedas">Moneda a convertir:</label>
+            <select name="selectMonedas" id="selectMonedas">
+                <option value="" disabled selected hidden>
+                    Seleccione moneda
+                </option>
+                <option value="">Moneda 1</option>
+                <option value="">Moneda 2</option>
+                <option value="">Moneda 3</option>
+            </select>
+            <button id="btnSubmit">Buscar</button>
+            <span id="result"></span>
+        </form>
+
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
