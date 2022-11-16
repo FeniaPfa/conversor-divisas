@@ -27,27 +27,31 @@
     </head>
     <body>
         <h1>Conversor de Monedas</h1>
-        <form>
+        <form id="form">
             <label for="clpInput">Pesos CLP</label>
             <input
                 name="clpInput"
                 id="clpInput"
                 type="number"
                 placeholder="Ingrese el monto en CLP"
+                min="0"
             />
             <label for="monedas">Moneda a convertir:</label>
             <select name="selectMonedas" id="selectMonedas">
                 <option value="" disabled selected hidden>
                     Seleccione moneda
                 </option>
-                <option value="">Moneda 1</option>
-                <option value="">Moneda 2</option>
-                <option value="">Moneda 3</option>
+                <option id="selectEuro" value="euro">Euros</option>
+                <option id="selectDolar" value="dolar">Dolar</option>
+                <option id="selectUf" value="uf">UF</option>
             </select>
-            <button id="btnSubmit">Buscar</button>
+            <button type="submit">Buscar</button>
             <span id="result"></span>
         </form>
 
+        <canvas id="myChart"></canvas>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="assets/js/main.js"></script>
     </body>
 </html>
