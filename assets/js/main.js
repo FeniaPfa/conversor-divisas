@@ -9,10 +9,7 @@ async function getMonedas() {
     try {
         const moneda = selectMonedas.value;
         const inputValue = +clpInput.value;
-        if (inputValue == 0 || moneda == "") {
-            alert("Debes completar el formulario");
-            return;
-        }
+
         const res = await fetch(`https://mindicador.cl/api/${moneda}`);
         const data = await res.json();
 
@@ -79,6 +76,11 @@ async function renderChart(){
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    if (clpInput.value == 0 || selectMonedas.value == "") {
+      alert("Debes completar el formulario");
+  } else {
     getMonedas();
     renderChart()
+  }
 });
