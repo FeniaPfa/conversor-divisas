@@ -29,56 +29,54 @@ const getMonedas = async () => {
     }
 }
 
-const prepareChart = async(monedas) => {
-
+const prepareChart = async (monedas) => {
     const ejeX = monedas.serie.map((item) => {
-        return item.fecha.slice(0,10);
+        return item.fecha.slice(0, 10);
     });
 
     const ejeY = monedas.serie.map((item) => {
-      return item.valor
-    })
+        return item.valor;
+    });
 
     const config = {
-      type: "line",
-      data: {
-        labels: ejeX,
-        datasets: [{
-          label: `${selectMonedas.value}`,
-          backgroundColor: "blue",
-          data: ejeY,
-        }]
-      },
-      options: {
-        scales:{
-          x: { max: 10}
-        }
-      }
+        type: "line",
+        data: {
+            labels: ejeX,
+            datasets: [
+                {
+                    label: `${selectMonedas.value}`,
+                    backgroundColor: "blue",
+                    data: ejeY,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                x: { max: 10 },
+            },
+        },
+    };
+
+    return config;
+};
+
+async function renderChart() {
+    if (myChart) {
+        myChart.destroy();
     }
+    const monedas = await getMonedas();
+    const config = await prepareChart(monedas);
 
-    return config
+    myChart = new Chart(chartDOM, config);
 }
-
-async function renderChart(){
-  if(myChart){
-    myChart.destroy()
-  }
-  const monedas = await getMonedas();
-  const config = await prepareChart(monedas)
-
-  myChart = new Chart(chartDOM, config)
-
-}
-
-
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     if (clpInput.value == 0 || selectMonedas.value == "") {
-      alert("Debes completar el formulario");
-  } else {
-    getMonedas();
-    renderChart()
-  }
+        alert("Debes completar el formulario");
+    } else {
+        getMonedas();
+        renderChart();
+    }
 });

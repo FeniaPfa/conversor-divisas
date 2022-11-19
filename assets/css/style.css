@@ -44,8 +44,8 @@ form {
     box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.211);
 }
 
-label{
-    letter-spacing: .1rem;
+label {
+    letter-spacing: 0.1rem;
     font-weight: 700;
 }
 
@@ -82,7 +82,7 @@ button:hover {
     padding: 3rem;
 }
 
-#result{
+#result {
     font-weight: 700;
     font-size: 2rem;
 }
