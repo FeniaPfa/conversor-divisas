@@ -14,3 +14,8 @@ form {
     align-items: center;
     gap: 1rem;
 }
+
+.chart-container{
+    margin: 0 auto;
+    width: 50%;
+}

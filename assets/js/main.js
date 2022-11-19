@@ -5,12 +5,11 @@ const result = document.getElementById("result");
 const chartDOM = document.getElementById("myChart")
 let myChart
 
-async function getMonedas() {
-    try {
-        const moneda = selectMonedas.value;
-        const inputValue = +clpInput.value;
 
-        const res = await fetch(`https://mindicador.cl/api/${moneda}`);
+const getMonedas = async () => {
+    try {
+
+        const res = await fetch(`https://mindicador.cl/api/${selectMonedas.value}`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -19,22 +18,21 @@ async function getMonedas() {
 
         const valorMoneda = +data.serie[0].valor;
 
-        result.textContent = valorMoneda * inputValue;
+        result.textContent = (valorMoneda * clpInput.value).toFixed();
 
 
         console.log(data)
 
         return data;
-    } catch (error) {
-        console.log(error);
-        result.textContent = error;
+    } catch (err) {
+        result.textContent = err;
     }
 }
 
-async function prepareChart(monedas) {
+const prepareChart = async(monedas) => {
 
     const ejeX = monedas.serie.map((item) => {
-        return item.fecha;
+        return item.fecha.slice(0,10);
     });
 
     const ejeY = monedas.serie.map((item) => {
@@ -47,7 +45,7 @@ async function prepareChart(monedas) {
         labels: ejeX,
         datasets: [{
           label: `${selectMonedas.value}`,
-          backgroundColor: "red",
+          backgroundColor: "blue",
           data: ejeY,
         }]
       },
