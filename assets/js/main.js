@@ -34,27 +34,28 @@ const prepareChart = async (monedas) => {
         return item.fecha.slice(0, 10);
     });
 
+    const maxEjeX = ejeX.slice(0,10)
+    console.log(maxEjeX)
+
     const ejeY = monedas.serie.map((item) => {
         return item.valor;
     });
 
+    const maxEjeY = ejeY.slice(0,10)
+
     const config = {
         type: "line",
         data: {
-            labels: ejeX,
+            labels: maxEjeX.reverse(),
             datasets: [
                 {
                     label: `${selectMonedas.value}`,
                     backgroundColor: "blue",
-                    data: ejeY,
+                    data: maxEjeY.reverse(),
                 },
             ],
         },
-        options: {
-            scales: {
-                x: { max: 10 },
-            },
-        },
+
     };
 
     return config;
