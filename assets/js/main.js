@@ -20,7 +20,6 @@ const getMonedas = async () => {
 
         result.textContent = (valorMoneda * clpInput.value).toFixed();
 
-
         console.log(data)
 
         return data;
@@ -33,15 +32,13 @@ const prepareChart = async (monedas) => {
     const ejeX = monedas.serie.map((item) => {
         return item.fecha.slice(0, 10);
     });
-
-    const maxEjeX = ejeX.slice(0,10)
-    console.log(maxEjeX)
+    const maxEjeX = ejeX.slice(0, 10);
 
     const ejeY = monedas.serie.map((item) => {
         return item.valor;
     });
 
-    const maxEjeY = ejeY.slice(0,10)
+    const maxEjeY = ejeY.slice(0, 10);
 
     const config = {
         type: "line",
@@ -55,7 +52,6 @@ const prepareChart = async (monedas) => {
                 },
             ],
         },
-
     };
 
     return config;
