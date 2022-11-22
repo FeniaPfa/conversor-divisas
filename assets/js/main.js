@@ -18,9 +18,9 @@ const getMonedas = async () => {
 
         const valorMoneda = +data.serie[0].valor;
 
-        result.textContent = (valorMoneda * clpInput.value).toFixed();
+        const exchange = +(valorMoneda * clpInput.value).toFixed()
 
-        console.log(data)
+        result.textContent = `$ ${exchange.toLocaleString()}`
 
         return data;
     } catch (err) {
